@@ -1,0 +1,52 @@
+---
+import { Star } from 'lucide-astro';
+import ProductCard from './ProductCard.astro';
+
+interface Product {
+  title: string;
+  image: string;
+  price: string;
+  rating: number;
+  affiliateUrl: string;
+  pros?: string[];
+  contras?: string[];
+}
+
+interface Props {
+  products: Product[];
+}
+
+const { products } = Astro.props;
+const topThree = products.slice(0, 3);
+---
+
+<section class="space-y-4 rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-950/80">
+  <div class="flex items-baseline justify-between gap-3">
+    <div>
+      <h2 class="text-base font-serif font-semibold text-slate-900 dark:text-slate-50">
+        Comparativa rápida
+      </h2>
+      <p class="text-xs text-slate-500 dark:text-slate-400">
+        Compara de un vistazo 3 opciones destacadas antes de ir a Amazon.
+      </p>
+    </div>
+    <div class="hidden items-center gap-1 text-xs text-slate-500 sm:flex dark:text-slate-400">
+      <Star class="h-3 w-3 text-amber-400 fill-amber-400" aria-hidden="true" />
+      Basado en nuestra valoración experta
+    </div>
+  </div>
+
+  <div class="hidden gap-4 md:grid md:grid-cols-3">
+    {topThree.map((product) => (
+      <ProductCard {...product} />
+    ))}
+  </div>
+
+  <div class="grid gap-3 md:hidden">
+    {topThree.map((product) => (
+      <ProductCard {...product} />
+    ))}
+  </div>
+</section>
+
+

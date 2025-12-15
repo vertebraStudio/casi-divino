@@ -1,0 +1,69 @@
+{
+  "$ref": "#/definitions/reviews",
+  "definitions": {
+    "reviews": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "precio": {
+          "type": "string",
+          "minLength": 1,
+          "errorMessage": {
+            "minLength": "Añade un rango o precio aproximado"
+          }
+        },
+        "valoracion": {
+          "type": "number",
+          "minimum": 0,
+          "errorMessage": {
+            "minimum": "La valoración mínima es 0",
+            "maximum": "La valoración máxima es 5"
+          },
+          "maximum": 5
+        },
+        "enlace_afiliado": {
+          "type": "string",
+          "format": "uri"
+        },
+        "imagen_destacada": {
+          "type": "string"
+        },
+        "pros": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "contras": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "destacado": {
+          "type": "boolean",
+          "default": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "precio",
+        "valoracion",
+        "enlace_afiliado",
+        "imagen_destacada",
+        "pros",
+        "contras"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

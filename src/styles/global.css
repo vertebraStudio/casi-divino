@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  font-size: 18px; /* tamaño base más grande para toda la web */
+}
+
+body {
+  @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased font-sans;
+}
+
+a {
+  @apply text-vino-600 hover:text-vino-500 underline-offset-4;
+}
+
+.prose {
+  @apply prose-slate dark:prose-invert;
+}
+
+

@@ -1,0 +1,88 @@
+---
+const navItems = [
+  { href: '/', label: 'Inicio' },
+  { href: '/accesorios', label: 'Accesorios' },
+  { href: '/vinotecas', label: 'Vinotecas' },
+  { href: '/blog', label: 'Blog' },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-slate-200/60 bg-white/80 dark:bg-slate-950/80 backdrop-blur">
+  <div class="relative mx-auto grid max-w-5xl grid-cols-3 items-center px-4 py-3 sm:px-6">
+    <a href="/" class="flex items-center gap-3 leading-tight">
+      <img
+        src="/media/logoprovisional.png"
+        alt="Casi Divino"
+        class="h-10 w-auto max-h-10 shrink-0 object-contain"
+        loading="lazy"
+      />
+      <div class="flex flex-col">
+        <span class="text-lg font-serif font-semibold tracking-tight text-vino-600 dark:text-vino-200">
+          Casi Divino
+        </span>
+        <span class="text-xs font-sans text-slate-500 dark:text-slate-400">
+          Guías y reseñas de vino
+        </span>
+      </div>
+    </a>
+
+    <nav class="hidden items-center justify-center gap-6 text-sm font-medium sm:flex">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="text-slate-700 transition hover:text-vino-600 dark:text-slate-200 dark:hover:text-vino-200"
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center justify-end gap-2">
+      <a
+        href="/contacto"
+        class="hidden rounded-full bg-vino-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-vino-500 dark:bg-vino-500 dark:hover:bg-vino-400 sm:inline-flex"
+      >
+        Contacto
+      </a>
+      <button
+        type="button"
+        class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-vino-500 hover:text-vino-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-vino-300 dark:hover:text-vino-200 sm:hidden"
+        aria-label="Abrir menú"
+        id="mobile-menu-toggle"
+      >
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="mx-auto hidden max-w-5xl space-y-1 border-t border-slate-200 bg-white px-4 py-3 text-sm dark:border-slate-800 dark:bg-slate-950 sm:hidden"
+  >
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class="block rounded-md px-2 py-1 text-slate-700 transition hover:bg-vino-50 hover:text-vino-700 dark:text-slate-200 dark:hover:bg-slate-900 dark:hover:text-vino-100"
+      >
+        {item.label}
+      </a>
+    ))}
+    <a
+      href="/contacto"
+      class="mt-2 block rounded-full bg-vino-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-vino-500 dark:bg-vino-500 dark:hover:bg-vino-400"
+    >
+      Contacto
+    </a>
+  </div>
+
+  <script is:inline>
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileToggle?.addEventListener('click', () => {
+      if (!mobileMenu) return;
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</header>
+
+
