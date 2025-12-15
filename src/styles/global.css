@@ -19,4 +19,27 @@ a {
   @apply prose-slate dark:prose-invert;
 }
 
+/* Botón de contacto con efecto de llenado de vino */
+.btn-vino-outline {
+  @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold border border-vino-600 text-vino-600 dark:text-vino-200 relative overflow-hidden transition-colors duration-300;
+}
+
+.btn-vino-outline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #7f1d1d, #be123c);
+  transform-origin: bottom;
+  transform: scaleY(0);
+  transition: transform 450ms ease-out;
+  z-index: -1;
+}
+
+.btn-vino-outline:hover {
+  @apply text-white;
+}
+
+.btn-vino-outline:hover::before {
+  transform: scaleY(1);
+}
 

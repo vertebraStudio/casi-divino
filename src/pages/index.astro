@@ -12,7 +12,14 @@ const reviewEntries = await getCollection('reviews');
 const featuredArticles = blogEntries
   .filter((entry) => entry.data.featured)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+  .slice(0, 4)
+  .map((entry) => {
+    // Calcular tiempo de lectura (promedio: 200 palabras por minuto)
+    const content = entry.body || '';
+    const wordCount = content.split(/\s+/).length;
+    const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+    return { ...entry, readingTime };
+  });
 
 const latestReviews = reviewEntries
   .filter((entry) => entry.data.destacado)
@@ -79,8 +86,8 @@ const comparisonProducts =
           class="flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-4 sm:px-6"
           style="scrollbar-width: none; -ms-overflow-style: none;"
         >
-            <a
-              href="/vinotecas"
+        <a
+          href="/vinotecas"
               class="group relative flex min-h-[400px] min-w-[calc(100vw-3rem)] flex-shrink-0 snap-start overflow-hidden rounded-2xl border border-white/10 text-slate-50 shadow-lg shadow-black/30 ring-1 ring-white/10 sm:min-h-[460px] sm:min-w-[calc(100vw-8rem)] md:min-w-[600px]"
             >
               <img
@@ -92,22 +99,22 @@ const comparisonProducts =
               <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
               <div class="relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <div class="space-y-3">
-                  <p class="text-xs font-medium uppercase tracking-[0.2em] text-vino-100/90">
+                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-vino-100/90">
                     Hogar
                   </p>
-                  <h3 class="text-2xl font-serif font-semibold sm:text-3xl">
+                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl">
                     Vinotecas para casa
                   </h3>
-                  <p class="text-sm leading-relaxed text-vino-50/90 sm:text-base">
+                  <p class="text-base leading-relaxed text-vino-50/90 sm:text-lg">
                     Mantén tus botellas a la temperatura perfecta con modelos silenciosos y elegantes.
                   </p>
                 </div>
-                <div class="mt-6 flex items-center justify-between text-xs text-vino-50/90 sm:text-sm">
-                  <span class="inline-flex items-center gap-1.5 rounded-full bg-black/40 px-4 py-2">
+                <div class="mt-6 flex items-center justify-between text-sm text-vino-50/90 sm:text-base">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-black/40 px-4 py-2 text-sm">
                     <span class="h-2 w-2 rounded-full bg-emerald-300" />
                     6 modelos recomendados
                   </span>
-                  <span class="inline-flex items-center gap-1.5 text-xs font-medium group-hover:underline sm:text-sm">
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium group-hover:underline sm:text-base">
                     Ver selección
                     <span aria-hidden="true">↗</span>
                   </span>
@@ -128,22 +135,22 @@ const comparisonProducts =
               <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
               <div class="relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <div class="space-y-3">
-                  <p class="text-xs font-medium uppercase tracking-[0.2em] text-slate-200">
+                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-200">
                     Mesa y copa
                   </p>
-                  <h3 class="text-2xl font-serif font-semibold sm:text-3xl">
+                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl">
                     Copas y cristalería
                   </h3>
-                  <p class="text-sm leading-relaxed text-slate-100/90 sm:text-base">
+                  <p class="text-base leading-relaxed text-slate-100/90 sm:text-lg">
                     Elige copas que potencien aromas, textura y color para cada tipo de vino.
                   </p>
                 </div>
-                <div class="mt-6 flex items-center justify-between text-xs text-slate-100/90 sm:text-sm">
-                  <span class="inline-flex items-center gap-1.5 rounded-full bg-black/35 px-4 py-2">
+                <div class="mt-6 flex items-center justify-between text-sm text-slate-100/90 sm:text-base">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-black/35 px-4 py-2 text-sm">
                     <span class="h-2 w-2 rounded-full bg-vino-300" />
                     4 colecciones comparadas
                   </span>
-                  <span class="inline-flex items-center gap-1.5 text-xs font-medium group-hover:underline sm:text-sm">
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium group-hover:underline sm:text-base">
                     Ver selección
                     <span aria-hidden="true">↗</span>
                   </span>
@@ -164,22 +171,22 @@ const comparisonProducts =
               <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
               <div class="relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <div class="space-y-3">
-                  <p class="text-xs font-medium uppercase tracking-[0.2em] text-emerald-100">
+                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-emerald-100">
                     Ritual
                   </p>
-                  <h3 class="text-2xl font-serif font-semibold sm:text-3xl">
+                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl">
                     Accesorios imprescindibles
                   </h3>
-                  <p class="text-sm leading-relaxed text-emerald-50/90 sm:text-base">
+                  <p class="text-base leading-relaxed text-emerald-50/90 sm:text-lg">
                     Sacacorchos, decantadores y aireadores para disfrutar cada botella al máximo.
                   </p>
                 </div>
-                <div class="mt-6 flex items-center justify-between text-xs text-emerald-50/90 sm:text-sm">
-                  <span class="inline-flex items-center gap-1.5 rounded-full bg-black/35 px-4 py-2">
+                <div class="mt-6 flex items-center justify-between text-sm text-emerald-50/90 sm:text-base">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-black/35 px-4 py-2 text-sm">
                     <span class="h-2 w-2 rounded-full bg-emerald-300" />
                     Kit básico recomendado
                   </span>
-                  <span class="inline-flex items-center gap-1.5 text-xs font-medium group-hover:underline sm:text-sm">
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium group-hover:underline sm:text-base">
                     Ver selección
                     <span aria-hidden="true">↗</span>
                   </span>
@@ -200,22 +207,22 @@ const comparisonProducts =
               <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
               <div class="relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <div class="space-y-3">
-                  <p class="text-xs font-medium uppercase tracking-[0.2em] text-amber-100">
+                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-100">
                     Para regalar
                   </p>
-                  <h3 class="text-2xl font-serif font-semibold sm:text-3xl">
+                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl">
                     Ideas para amantes del vino
                   </h3>
-                  <p class="text-sm leading-relaxed text-amber-50/90 sm:text-base">
+                  <p class="text-base leading-relaxed text-amber-50/90 sm:text-lg">
                     Packs y detalles con efecto "wow" para sorprender sin complicarte.
                   </p>
                 </div>
-                <div class="mt-6 flex items-center justify-between text-xs text-amber-50/90 sm:text-sm">
-                  <span class="inline-flex items-center gap-1.5 rounded-full bg-black/35 px-4 py-2">
+                <div class="mt-6 flex items-center justify-between text-sm text-amber-50/90 sm:text-base">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-black/35 px-4 py-2 text-sm">
                     <span class="h-2 w-2 rounded-full bg-amber-300" />
                     Selección para cualquier presupuesto
                   </span>
-                  <span class="inline-flex items-center gap-1.5 text-xs font-medium group-hover:underline sm:text-sm">
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium group-hover:underline sm:text-base">
                     Ver selección
                     <span aria-hidden="true">↗</span>
                   </span>
@@ -242,162 +249,499 @@ const comparisonProducts =
         <div class="pointer-events-none absolute inset-y-4 right-0 w-20 bg-gradient-to-l from-slate-950 to-transparent sm:inset-y-6 sm:w-28" />
       </div>
       <div class="mt-6 flex justify-center">
-        <a
-          href="/colecciones"
-          class="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-100 shadow-sm shadow-black/40 ring-1 ring-white/20 backdrop-blur transition hover:bg-white/20 hover:ring-white/40"
+          <a
+            href="/colecciones"
+            class="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-100 shadow-sm shadow-black/40 ring-1 ring-white/20 backdrop-blur transition hover:bg-vino-600 hover:text-white hover:ring-vino-600"
+          >
+            Ver todas las colecciones
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+        </div>
+    </section>
+  <section class="border-b border-slate-900/40 bg-slate-950/95">
+    <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-vino-300">
+            Productos recomendados
+          </p>
+          <h2 class="mt-1 text-3xl font-serif font-semibold tracking-tight text-slate-50 sm:text-4xl">
+            Nuestra selección para empezar bien la bodega
+          </h2>
+          <p class="mt-2 max-w-xl text-base text-slate-300">
+            Una selección rápida de productos con buena relación calidad-precio para que no tengas que comparar durante horas.
+          </p>
+        </div>
+        <p class="mt-2 max-w-xs text-xs text-slate-400 sm:text-sm">
+          Enlaces de afiliado a Amazon: tú pagas lo mismo y ayudas a mantener Casi Divino.
+        </p>
+      </div>
+
+      <div class="relative -mx-4 sm:-mx-6">
+        <style is:inline>
+          {`
+            #featured-products {
+              scrollbar-width: none;
+              -ms-overflow-style: none;
+            }
+            #featured-products::-webkit-scrollbar {
+              display: none;
+            }
+            @media (min-width: 768px) {
+              #featured-products {
+                width: calc(320px * 3 + 16px * 2);
+                max-width: 100%;
+                margin: 0 auto;
+              }
+            }
+          `}
+        </style>
+        <div
+          id="featured-products"
+          class="flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:px-6 md:snap-none"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
         >
-          Ver todas las colecciones
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src="/media/ejemplo1.jpg"
+                alt="Vinoteca compacta para 12 botellas"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
+                Vinoteca
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col justify-between gap-3 p-4">
+              <div class="space-y-3">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                  Vinoteca compacta para 12 botellas
+                </h3>
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                  Ideal para pisos pequeños: silenciosa, con control electrónico de temperatura y puerta de cristal ahumado.
+                </p>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-xs text-amber-300">
+                  <div class="flex items-center gap-0.5">
+                    <span>★★★★★</span>
+                    <span class="ml-1 text-[11px] text-slate-400">4,7 / 5</span>
+                  </div>
+                  <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-300">
+                    Superventas
+                  </span>
+                </div>
+                <div class="flex items-center justify-between text-base font-semibold min-h-[1.75rem]">
+                  <span class="text-slate-50">€189,99</span>
+                  <span class="text-sm font-normal text-slate-400 line-through">€219,99</span>
+                </div>
+                <a
+                  href="#"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                >
+                  Ver en Amazon
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src="/media/ejemplo2.jpg"
+                alt="Juego de 6 copas de vino tinto"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
+                Copas
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col justify-between gap-3 p-4">
+              <div class="space-y-3">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                  Juego de 6 copas de vino tinto
+                </h3>
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                  Cristal fino, resistente al lavavajillas y con forma pensada para concentrar aromas y suavizar taninos.
+                </p>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-xs text-amber-300">
+                  <div class="flex items-center gap-0.5">
+                    <span>★★★★☆</span>
+                    <span class="ml-1 text-[11px] text-slate-400">4,5 / 5</span>
+                  </div>
+                  <span class="rounded-full bg-slate-100/5 px-2 py-0.5 text-xs font-semibold text-slate-200">
+                    Mejor calidad-precio
+                  </span>
+                </div>
+                <div class="flex items-center justify-between text-base font-semibold min-h-[1.75rem]">
+                  <span class="text-slate-50">€39,90</span>
+                  <span class="text-sm font-normal text-slate-400 line-through invisible">€0,00</span>
+                </div>
+                <a
+                  href="#"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                >
+                  Ver en Amazon
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src="/media/ejemplo3.jpg"
+                alt="Kit de accesorios para vino"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
+                Accesorios
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col justify-between gap-3 p-4">
+              <div class="space-y-3">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                  Kit de accesorios para vino
+                </h3>
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                  Incluye sacacorchos, tapón al vacío y aireador, en un estuche elegante perfecto también para regalar.
+                </p>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-xs text-amber-300">
+                  <div class="flex items-center gap-0.5">
+                    <span>★★★★☆</span>
+                    <span class="ml-1 text-[11px] text-slate-400">4,4 / 5</span>
+                  </div>
+                  <span class="rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-semibold text-amber-300">
+                    Ideal para regalo
+                  </span>
+                </div>
+                <div class="flex items-center justify-between text-base font-semibold min-h-[1.75rem]">
+                  <span class="text-slate-50">€24,95</span>
+                  <span class="text-sm font-normal text-slate-400 line-through invisible">€0,00</span>
+                </div>
+                <a
+                  href="#"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                >
+                  Ver en Amazon
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src="/media/ejemplo4.jpg"
+                alt="Decantador de vino de cristal"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
+                Decantador
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col justify-between gap-3 p-4">
+              <div class="space-y-3">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                  Decantador de vino de cristal
+                </h3>
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                  Diseño elegante con base ancha para oxigenar mejor el vino. Capacidad de 1 litro, perfecto para botellas estándar.
+                </p>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-xs text-amber-300">
+                  <div class="flex items-center gap-0.5">
+                    <span>★★★★★</span>
+                    <span class="ml-1 text-[11px] text-slate-400">4,6 / 5</span>
+                  </div>
+                  <span class="rounded-full bg-vino-500/10 px-2 py-0.5 text-xs font-semibold text-vino-300">
+                    Más vendido
+                  </span>
+                </div>
+                <div class="flex items-center justify-between text-base font-semibold min-h-[1.75rem]">
+                  <span class="text-slate-50">€29,99</span>
+                  <span class="text-sm font-normal text-slate-400 line-through">€34,99</span>
+                </div>
+                <a
+                  href="#"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                >
+                  Ver en Amazon
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src="/media/ejemplo1.jpg"
+                alt="Termómetro para vino digital"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
+                Accesorios
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col justify-between gap-3 p-4">
+              <div class="space-y-3">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                  Termómetro para vino digital
+                </h3>
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                  Mide la temperatura perfecta para servir cada tipo de vino. Pantalla LCD, lectura rápida y diseño compacto.
+                </p>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-xs text-amber-300">
+                  <div class="flex items-center gap-0.5">
+                    <span>★★★★☆</span>
+                    <span class="ml-1 text-[11px] text-slate-400">4,3 / 5</span>
+                  </div>
+                  <span class="rounded-full bg-blue-500/10 px-2 py-0.5 text-xs font-semibold text-blue-300">
+                    Precisión
+                  </span>
+                </div>
+                <div class="flex items-center justify-between text-base font-semibold min-h-[1.75rem]">
+                  <span class="text-slate-50">€12,95</span>
+                  <span class="text-sm font-normal text-slate-400 line-through invisible">€0,00</span>
+                </div>
+                <a
+                  href="#"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                >
+                  Ver en Amazon
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src="/media/ejemplo2.jpg"
+                alt="Juego de 4 copas de vino blanco"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
+                Copas
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col justify-between gap-3 p-4">
+              <div class="space-y-3">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                  Juego de 4 copas de vino blanco
+                </h3>
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                  Copas altas y estrechas diseñadas para mantener la temperatura del vino blanco. Cristal de calidad premium.
+                </p>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-xs text-amber-300">
+                  <div class="flex items-center gap-0.5">
+                    <span>★★★★★</span>
+                    <span class="ml-1 text-[11px] text-slate-400">4,8 / 5</span>
+                  </div>
+                  <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-300">
+                    Top ventas
+                  </span>
+                </div>
+                <div class="flex items-center justify-between text-base font-semibold min-h-[1.75rem]">
+                  <span class="text-slate-50">€45,90</span>
+                  <span class="text-sm font-normal text-slate-400 line-through">€52,90</span>
+                </div>
+                <a
+                  href="#"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                >
+                  Ver en Amazon
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <button
+          type="button"
+          id="products-prev"
+          class="absolute -left-1 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/60 text-xs text-slate-100 shadow-lg shadow-black/40 backdrop-blur hover:bg-black/80 sm:-left-5 sm:flex sm:h-10 sm:w-10"
+          aria-label="Producto anterior"
+        >
+          <span aria-hidden="true">←</span>
+        </button>
+        <button
+          type="button"
+          id="products-next"
+          class="absolute -right-1 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/60 text-xs text-slate-100 shadow-lg shadow-black/40 backdrop-blur hover:bg-black/80 sm:-right-5 sm:flex sm:h-10 sm:w-10"
+          aria-label="Producto siguiente"
+        >
+          <span aria-hidden="true">→</span>
+        </button>
+        <div class="pointer-events-none absolute inset-y-4 right-0 w-20 bg-gradient-to-l from-slate-950 to-transparent sm:inset-y-6 sm:w-28" />
+      </div>
+      <div class="mt-6 flex justify-center">
+        <a
+          href="/productos"
+          class="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-100 shadow-sm shadow-black/40 ring-1 ring-white/20 backdrop-blur transition hover:bg-vino-600 hover:text-white hover:ring-vino-600"
+        >
+          Ver todos los productos destacados
           <span aria-hidden="true">→</span>
         </a>
       </div>
     </div>
   </section>
-  <section class="border-b border-slate-900/40 bg-slate-950/95">
-    <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
+
+  <!-- Separador con efecto parallax -->
+  <div class="parallax-separator relative h-32 overflow-hidden sm:h-40">
+    <div
+      class="parallax-image absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('/media/fondoprueba.jpg');"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/60 to-slate-950/80"></div>
+  </div>
+
+  <!-- Sección de Blog -->
+  <section class="border-b border-slate-200 bg-white py-12 dark:border-slate-800 dark:bg-slate-950 sm:py-16">
+    <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 sm:px-6">
       <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p class="text-xs font-semibold uppercase tracking-[0.2em] text-vino-300">
-            Productos recomendados
+            Blog
           </p>
-          <h2 class="mt-1 text-2xl font-serif font-semibold tracking-tight text-slate-50 sm:text-3xl">
-            Nuestra selección para empezar bien la bodega
+          <h2 class="mt-1 text-2xl font-serif font-semibold tracking-tight text-slate-900 dark:text-slate-50 sm:text-3xl">
+            Aprende sobre vino
           </h2>
-          <p class="mt-2 max-w-xl text-sm text-slate-300">
-            Una selección rápida de productos con buena relación calidad-precio para que no tengas que comparar durante horas.
+          <p class="mt-2 max-w-xl text-sm text-slate-600 dark:text-slate-400">
+            Guías, consejos y artículos para convertirte en un auténtico experto en vino.
           </p>
         </div>
-        <p class="mt-2 max-w-xs text-[11px] text-slate-400 sm:text-xs">
-          Enlaces de afiliado a Amazon: tú pagas lo mismo y ayudas a mantener Casi Divino.
-        </p>
       </div>
 
-      <div class="grid gap-4 md:grid-cols-3">
-        <article class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5">
-          <div class="relative aspect-[4/3] overflow-hidden">
-            <img
-              src="/media/ejemplo1.jpg"
-              alt="Vinoteca compacta para 12 botellas"
-              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-vino-100">
-              Vinoteca
-            </div>
-          </div>
-          <div class="flex flex-1 flex-col gap-3 p-4">
-            <h3 class="line-clamp-2 font-serif text-[15px] font-semibold text-slate-50">
-              Vinoteca compacta para 12 botellas
-            </h3>
-            <p class="line-clamp-3 text-xs leading-relaxed text-slate-300">
-              Ideal para pisos pequeños: silenciosa, con control electrónico de temperatura y puerta de cristal ahumado.
-            </p>
-            <div class="mt-1 flex items-center justify-between text-[11px] text-amber-300">
-              <div class="flex items-center gap-0.5">
-                <span>★★★★★</span>
-                <span class="ml-1 text-[10px] text-slate-400">4,7 / 5</span>
-              </div>
-              <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-300">
-                Superventas
-              </span>
-            </div>
-            <div class="mt-1 flex items-center justify-between text-sm font-semibold">
-              <span class="text-slate-50">€189,99</span>
-              <span class="text-xs font-normal text-slate-400 line-through">€219,99</span>
-            </div>
+      {featuredArticles.length === 0 ? (
+        <p class="text-xs text-slate-500 dark:text-slate-400">
+          Aún no hay artículos destacados. Añade contenido en
+          <code class="mx-1 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] dark:bg-slate-900">
+            src/content/blog
+          </code>
+          marcando <code>featured: true</code> en el frontmatter.
+        </p>
+      ) : (
+        <div class="grid gap-6 lg:grid-cols-3 lg:items-stretch">
+          {/* Entrada destacada */}
+          {featuredArticles[0] && (
             <a
-              href="#"
-              class="mt-3 inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-xs font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+              href={`/blog/${featuredArticles[0].slug}/`}
+              class="group relative col-span-1 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:border-vino-500/70 hover:shadow-lg hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-950/80 lg:col-span-2"
             >
-              Ver en Amazon
+              <div class="relative aspect-[16/9] overflow-hidden">
+                <img
+                  src="/media/ejemplo1.jpg"
+                  alt={featuredArticles[0].data.title}
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                <div class="absolute bottom-4 left-4 right-4">
+                  <div class="mb-2 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-vino-700 backdrop-blur dark:bg-slate-900/90 dark:text-vino-200">
+                    Destacado
+                  </div>
+                  <h3 class="text-xl font-serif font-semibold text-white sm:text-2xl">
+                    {featuredArticles[0].data.title}
+                  </h3>
+                </div>
+              </div>
+              <div class="p-6">
+                <p class="line-clamp-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  {featuredArticles[0].data.description}
+                </p>
+                <div class="mt-4 flex items-center justify-between">
+                  <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                    <p>
+                      {featuredArticles[0].data.date.toLocaleDateString('es-ES', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </p>
+                    <span class="text-slate-400 dark:text-slate-500">•</span>
+                    <p>{featuredArticles[0].readingTime} min lectura</p>
+                  </div>
+                  <span class="inline-flex items-center gap-1 text-xs font-medium text-vino-600 group-hover:underline dark:text-vino-400">
+                    Leer más
+                    <span aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </div>
             </a>
-          </div>
-        </article>
+          )}
 
-        <article class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5">
-          <div class="relative aspect-[4/3] overflow-hidden">
-            <img
-              src="/media/ejemplo2.jpg"
-              alt="Juego de 6 copas de vino tinto"
-              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-vino-100">
-              Copas
-            </div>
-          </div>
-          <div class="flex flex-1 flex-col gap-3 p-4">
-            <h3 class="line-clamp-2 font-serif text-[15px] font-semibold text-slate-50">
-              Juego de 6 copas de vino tinto
-            </h3>
-            <p class="line-clamp-3 text-xs leading-relaxed text-slate-300">
-              Cristal fino, resistente al lavavajillas y con forma pensada para concentrar aromas y suavizar taninos.
-            </p>
-            <div class="mt-1 flex items-center justify-between text-[11px] text-amber-300">
-              <div class="flex items-center gap-0.5">
-                <span>★★★★☆</span>
-                <span class="ml-1 text-[10px] text-slate-400">4,5 / 5</span>
-              </div>
-              <span class="rounded-full bg-slate-100/5 px-2 py-0.5 text-[10px] font-semibold text-slate-200">
-                Mejor calidad-precio
-              </span>
-            </div>
-            <div class="mt-1 flex items-center justify-between text-sm font-semibold">
-              <span class="text-slate-50">€39,90</span>
-            </div>
-            <a
-              href="#"
-              class="mt-3 inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-xs font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-            >
-              Ver en Amazon
+          {/* Entradas secundarias */}
+          <div class="col-span-1 flex flex-col gap-4">
+            {featuredArticles.slice(1, 4).map((post) => (
+              <a
+                href={`/blog/${post.slug}/`}
+                class="group flex flex-1 gap-4 overflow-hidden rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:border-vino-500/70 hover:shadow-md hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-950/80"
+              >
+                <div class="relative h-full w-28 shrink-0 overflow-hidden rounded-lg">
+                  <img
+                    src="/media/ejemplo2.jpg"
+                    alt={post.data.title}
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="flex min-w-0 flex-1 flex-col">
+                  <h3 class="line-clamp-2 font-serif text-sm font-semibold text-slate-900 group-hover:text-vino-600 dark:text-slate-50 dark:group-hover:text-vino-200">
+                {post.data.title}
+              </h3>
+                  <p class="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                {post.data.description}
+              </p>
+                  <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                {post.data.date.toLocaleDateString('es-ES', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: '2-digit',
+                })}
+                    {' • '}
+                    {post.readingTime} min lectura
+              </p>
+                  <span class="mt-2 inline-flex items-center gap-1 text-xs font-medium text-vino-600 group-hover:underline dark:text-vino-400">
+                    Leer más
+                    <span aria-hidden="true">→</span>
+                  </span>
+                </div>
             </a>
+          ))}
           </div>
-        </article>
+        </div>
+      )}
 
-        <article class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5">
-          <div class="relative aspect-[4/3] overflow-hidden">
-            <img
-              src="/media/ejemplo3.jpg"
-              alt="Kit de accesorios para vino"
-              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-vino-100">
-              Accesorios
-            </div>
-          </div>
-          <div class="flex flex-1 flex-col gap-3 p-4">
-            <h3 class="line-clamp-2 font-serif text-[15px] font-semibold text-slate-50">
-              Kit de accesorios para vino
-            </h3>
-            <p class="line-clamp-3 text-xs leading-relaxed text-slate-300">
-              Incluye sacacorchos, tapón al vacío y aireador, en un estuche elegante perfecto también para regalar.
-            </p>
-            <div class="mt-1 flex items-center justify-between text-[11px] text-amber-300">
-              <div class="flex items-center gap-0.5">
-                <span>★★★★☆</span>
-                <span class="ml-1 text-[10px] text-slate-400">4,4 / 5</span>
-              </div>
-              <span class="rounded-full bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold text-amber-300">
-                Ideal para regalo
-              </span>
-            </div>
-            <div class="mt-1 flex items-center justify-between text-sm font-semibold">
-              <span class="text-slate-50">€24,95</span>
-            </div>
-            <a
-              href="#"
-              class="mt-3 inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-xs font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-            >
-              Ver en Amazon
-            </a>
-          </div>
-        </article>
+      <div class="flex justify-center pt-4">
+        <a href="/blog" class="btn-vino-outline">
+          Ver todas las entradas
+        </a>
       </div>
     </div>
-  </section>
+    </section>
+
   <script is:inline>
     const collectionsContainer = document.getElementById('featured-collections');
     const collectionsPrev = document.getElementById('collections-prev');
@@ -422,105 +766,90 @@ const comparisonProducts =
     collectionsNext?.addEventListener('click', () => scrollCollections('next'));
   </script>
 
+  <script is:inline>
+    (function() {
+      const productsContainer = document.getElementById('featured-products');
+      const productsPrev = document.getElementById('products-prev');
+      const productsNext = document.getElementById('products-next');
+
+      if (!productsContainer) return;
+
+      function scrollProducts(direction) {
+        const firstCard = productsContainer.querySelector('article');
+        if (!firstCard) return;
+        
+        const gap = 16; // gap-4
+        const cardWidth = firstCard.offsetWidth + gap;
+        const scrollAmount = cardWidth * 3; // Scroll 3 cards at a time
+
+        productsContainer.scrollBy({
+          left: direction === 'next' ? scrollAmount : -scrollAmount,
+          behavior: 'smooth',
+        });
+      }
+
+      if (productsPrev) {
+        productsPrev.addEventListener('click', () => scrollProducts('prev'));
+      }
+      if (productsNext) {
+        productsNext.addEventListener('click', () => scrollProducts('next'));
+      }
+    })();
+  </script>
+
+
+  <script is:inline>
+    // Efecto parallax para el separador
+    (function() {
+      const parallaxSeparator = document.querySelector('.parallax-separator');
+      const parallaxImage = document.querySelector('.parallax-image');
+      
+      if (!parallaxSeparator || !parallaxImage) return;
+      
+      function updateParallax() {
+        const rect = parallaxSeparator.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Calcular cuánto del elemento está visible
+        const elementTop = rect.top;
+        const elementBottom = rect.bottom;
+        const elementHeight = rect.height;
+        
+        // Si el elemento está visible en la ventana
+        if (elementBottom >= 0 && elementTop <= windowHeight) {
+          // Calcular el progreso del scroll (0 cuando está arriba, 1 cuando está abajo)
+          const scrollProgress = Math.max(0, Math.min(1, (windowHeight - elementTop) / (windowHeight + elementHeight)));
+          
+          // Aplicar transformación parallax más pronunciada
+          // La imagen se mueve más lento que el scroll (efecto parallax)
+          const translateY = scrollProgress * 200 - 100; // Rango de -100px a 100px para efecto más notorio
+          parallaxImage.style.transform = `translateY(${translateY}px) scale(1.3)`;
+        }
+      }
+      
+      // Usar requestAnimationFrame para mejor rendimiento
+      let ticking = false;
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateParallax();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+      
+      // Inicializar y escuchar eventos
+      updateParallax();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', updateParallax);
+    })();
+  </script>
+
   <div class="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-10 sm:px-6 sm:py-12">
     {comparisonProducts.length >= 2 && (
       <ComparisonTable products={comparisonProducts} />
     )}
-
-    <section class="space-y-4">
-      <div class="flex items-baseline justify-between gap-3">
-        <div>
-          <h2 class="text-base font-serif font-semibold text-slate-900 dark:text-slate-50">
-            Reseñas destacadas
-          </h2>
-          <p class="text-xs text-slate-500 dark:text-slate-400">
-            Selección de productos recomendados con enlaces a Amazon.
-          </p>
-        </div>
-        <a
-          href="/vinotecas"
-          class="text-xs font-medium text-vino-600 underline-offset-4 hover:underline dark:text-vino-200"
-        >
-          Ver todas las comparativas
-        </a>
-      </div>
-
-      {latestReviews.length === 0 ? (
-        <p class="text-xs text-slate-500 dark:text-slate-400">
-          Aún no hay reseñas publicadas. Añade contenido en
-          <code class="mx-1 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] dark:bg-slate-900">
-            src/content/reviews
-          </code>
-          para empezar.
-        </p>
-      ) : (
-        <div class="grid gap-4 md:grid-cols-3">
-          {latestReviews.map((review) => (
-            <ProductCard
-              title={review.data.title}
-              image={review.data.imagen_destacada}
-              price={review.data.precio}
-              rating={review.data.valoracion}
-              affiliateUrl={review.data.enlace_afiliado}
-              pros={review.data.pros}
-              contras={review.data.contras}
-            />
-          ))}
-        </div>
-      )}
-    </section>
-
-    <section class="space-y-4">
-      <div class="flex items-baseline justify-between gap-3">
-        <div>
-          <h2 class="text-base font-serif font-semibold text-slate-900 dark:text-slate-50">
-            Últimos artículos del blog
-          </h2>
-          <p class="text-xs text-slate-500 dark:text-slate-400">
-            Aprende a catar, conservar y servir el vino como un auténtico experto.
-          </p>
-        </div>
-        <a
-          href="/blog"
-          class="text-xs font-medium text-vino-600 underline-offset-4 hover:underline dark:text-vino-200"
-        >
-          Ver todos los artículos
-        </a>
-      </div>
-
-      {featuredArticles.length === 0 ? (
-        <p class="text-xs text-slate-500 dark:text-slate-400">
-          Aún no hay artículos destacados. Añade contenido en
-          <code class="mx-1 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] dark:bg-slate-900">
-            src/content/blog
-          </code>
-          marcando <code>featured: true</code> en el frontmatter.
-        </p>
-      ) : (
-        <div class="grid gap-4 md:grid-cols-3">
-          {featuredArticles.map((post) => (
-            <a
-              href={`/blog/${post.slug}/`}
-              class="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white/80 p-4 text-sm shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:border-vino-500/70 hover:shadow-lg hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-950/80"
-            >
-              <h3 class="font-serif text-base font-semibold text-slate-900 group-hover:text-vino-600 dark:text-slate-50 dark:group-hover:text-vino-200">
-                {post.data.title}
-              </h3>
-              <p class="mt-2 line-clamp-3 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-                {post.data.description}
-              </p>
-              <p class="mt-3 text-[11px] text-slate-500 dark:text-slate-400">
-                {post.data.date.toLocaleDateString('es-ES', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: '2-digit',
-                })}
-              </p>
-            </a>
-          ))}
-        </div>
-      )}
-    </section>
   </div>
 </Layout>
 

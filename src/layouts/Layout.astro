@@ -50,16 +50,82 @@ const { title, description, canonical, ogImage, noindex } = Astro.props;
       <slot />
     </main>
 
-    <footer class="border-t border-slate-200 bg-white/90 py-6 text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950/90 dark:text-slate-400">
-      <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <div class="space-y-1">
-          <p class="font-serif text-sm font-semibold text-slate-800 dark:text-slate-100">
-            Casi Divino
-          </p>
-          <AffiliateDisclaimer />
+    <footer class="border-t border-slate-200 bg-white/90 py-8 text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950/90 dark:text-slate-400 sm:py-10">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6">
+        <div class="grid gap-8 md:grid-cols-3">
+          {/* Logo y descripción */}
+          <div class="space-y-3">
+            <a href="/" class="flex items-center gap-3">
+              <img
+                src="/media/logoprovisional.png"
+                alt="Casi Divino"
+                class="h-10 w-auto max-h-10 shrink-0 object-contain"
+                loading="lazy"
+              />
+              <div class="flex flex-col">
+                <span class="text-lg font-serif font-semibold tracking-tight text-vino-600 dark:text-vino-200">
+                  Casi Divino
+                </span>
+                <span class="text-xs font-sans text-slate-500 dark:text-slate-400">
+                  Guías y reseñas de vino
+                </span>
+              </div>
+            </a>
+            <p class="text-xs text-slate-500 dark:text-slate-400 max-w-2xl">
+              Participamos en el Programa de Afiliados de Amazon EU. Esto no supone un coste adicional para ti.
+            </p>
+          </div>
+
+          {/* Enlaces */}
+          <div class="space-y-3">
+            <h3 class="font-serif text-sm font-semibold text-slate-800 dark:text-slate-100">
+              Enlaces
+            </h3>
+            <nav class="grid grid-cols-2 gap-x-4 gap-y-2">
+              <a
+                href="/"
+                class="text-slate-600 transition hover:text-vino-600 dark:text-slate-400 dark:hover:text-vino-200"
+              >
+                Inicio
+              </a>
+              <a
+                href="/vinotecas"
+                class="text-slate-600 transition hover:text-vino-600 dark:text-slate-400 dark:hover:text-vino-200"
+              >
+                Vinotecas
+              </a>
+              <a
+                href="/accesorios"
+                class="text-slate-600 transition hover:text-vino-600 dark:text-slate-400 dark:hover:text-vino-200"
+              >
+                Accesorios
+              </a>
+              <a
+                href="/blog"
+                class="text-slate-600 transition hover:text-vino-600 dark:text-slate-400 dark:hover:text-vino-200"
+              >
+                Blog
+              </a>
+              <a
+                href="/contacto"
+                class="text-slate-600 transition hover:text-vino-600 dark:text-slate-400 dark:hover:text-vino-200"
+              >
+                Contacto
+              </a>
+            </nav>
+          </div>
+
+          {/* Información legal */}
+          <div class="space-y-3">
+            <h3 class="font-serif text-sm font-semibold text-slate-800 dark:text-slate-100">
+              Información
+            </h3>
+            <div class="space-y-2 text-[11px] sm:text-xs">
+              <p>Contenido con fines informativos. Bebe siempre con responsabilidad.</p>
+            </div>
+          </div>
         </div>
-        <div class="space-y-1 text-[11px] text-right sm:text-xs">
-          <p>Contenido con fines informativos. Bebe siempre con responsabilidad.</p>
+        <div class="mt-8 border-t border-slate-200 pt-6 text-center text-[11px] text-slate-500 dark:border-slate-800 dark:text-slate-400 sm:text-xs">
           <p>© {new Date().getFullYear()} Casi Divino. Todos los derechos reservados.</p>
         </div>
       </div>
