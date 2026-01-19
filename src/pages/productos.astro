@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const reviewEntries = await getCollection('reviews');
+
+// Obtener todos los productos destacados
+const featuredProducts = reviewEntries
+  .filter((entry) => entry.data.destacado)
+  .map((review) => ({
+    title: review.data.title,
+    image: review.data.imagen_destacada,
+    price: review.data.precio,
+    rating: review.data.valoracion,
+    affiliateUrl: review.data.enlace_afiliado,
+    pros: review.data.pros,
+    contras: review.data.contras,
+    slug: review.slug,
+  }))
+  .sort((a, b) => b.rating - a.rating); // Ordenar por valoración descendente
+---
+
+<Layout
+  title="Productos Destacados | Casi Divino"
+  description="Descubre nuestra selección de productos destacados: vinotecas, copas, accesorios y más. Reseñas honestas con enlaces de afiliado a Amazon."
+  canonical="/productos"
+>
+  <section class="border-b border-slate-900/40 bg-slate-900">
+    <div class="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-16 sm:px-6 sm:py-20">
+      <div class="flex flex-col gap-2">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em]" style="color: #E5C256;">
+          Productos recomendados
+        </p>
+        <h1 class="text-3xl font-serif font-semibold tracking-tight text-pink-200 sm:text-4xl lg:text-5xl">
+          Nuestra selección destacada
+        </h1>
+        <p class="mt-2 max-w-2xl text-base text-slate-300 sm:text-lg">
+          Una colección curada de productos con excelente relación calidad-precio, probados y recomendados por nuestro equipo.
+        </p>
+      </div>
+
+      {featuredProducts.length === 0 ? (
+        <div class="rounded-2xl border border-slate-800/80 bg-slate-900/80 p-12 text-center">
+          <p class="text-base text-slate-400">
+            Aún no hay productos destacados disponibles.
+          </p>
+          <p class="mt-2 text-sm text-slate-500">
+            Añade productos en <code class="rounded bg-slate-900 px-2 py-1 text-xs">src/content/reviews</code> marcando <code class="rounded bg-slate-900 px-2 py-1 text-xs">destacado: true</code> en el frontmatter.
+          </p>
+        </div>
+      ) : (
+        <>
+          <div class="mb-4 flex items-center justify-between">
+            <p class="text-sm text-slate-400">
+              {featuredProducts.length} {featuredProducts.length === 1 ? 'producto' : 'productos'} destacado{featuredProducts.length === 1 ? '' : 's'}
+            </p>
+            <p class="text-xs text-slate-500">
+              Enlaces de afiliado a Amazon
+            </p>
+          </div>
+
+          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {featuredProducts.map((product) => (
+              <article class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 transition hover:border-vino-500/50 hover:shadow-xl hover:shadow-vino-900/20">
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                  <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
+                    Destacado
+                  </div>
+                  <div class="pointer-events-none absolute right-3 top-3 flex items-center gap-1 rounded-full bg-black/70 px-2 py-1 text-xs text-amber-300">
+                    <span>★</span>
+                    <span class="font-semibold">{product.rating.toFixed(1)}</span>
+                  </div>
+                </div>
+                <div class="flex flex-1 flex-col justify-between gap-3 p-4">
+                  <div class="space-y-3">
+                    <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                      {product.title}
+                    </h3>
+                    {product.pros && product.pros.length > 0 && (
+                      <p class="line-clamp-2 text-sm leading-relaxed text-slate-300">
+                        {product.pros[0]}
+                      </p>
+                    )}
+                  </div>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between text-xs text-amber-300">
+                      <div class="flex items-center gap-0.5">
+                        {Array.from({ length: 5 }, (_, i) => (
+                          <span class={i < Math.round(product.rating) ? 'text-amber-300' : 'text-slate-600'}>
+                            ★
+                          </span>
+                        ))}
+                        <span class="ml-1 text-[11px] text-slate-400">{product.rating.toFixed(1)} / 5</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between text-base font-semibold min-h-[1.75rem]">
+                      <span class="text-slate-50">{product.price}</span>
+                    </div>
+                    <a
+                      href={product.affiliateUrl}
+                      target="_blank"
+                      rel="nofollow sponsored"
+                      class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+                    >
+                      Ver en Amazon
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+</Layout>
+

@@ -50,21 +50,21 @@ const comparisonProducts =
     ctaHref="/vinotecas"
   />
 
-  <section class="border-b border-slate-900/40 bg-slate-950">
+  <section class="border-b border-slate-900/40 bg-slate-900">
     <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
       <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-vino-300 sm:text-xs">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.24em] sm:text-xs" style="color: #E5C256;">
             Inspiración
           </p>
-          <h2 class="mt-1 text-3xl font-serif font-semibold tracking-tight text-slate-50 sm:text-4xl">
+          <h2 class="mt-1 text-3xl font-serif font-semibold tracking-tight text-pink-200 sm:text-4xl">
             Colecciones destacadas
           </h2>
-          <p class="mt-3 max-w-xl text-base text-slate-200 sm:text-[17px]">
+          <p class="mt-3 max-w-xl text-base text-texto sm:text-[17px]">
             Inspírate con selecciones curadas para diferentes momentos: desde una cena íntima hasta una cata con amigos.
           </p>
         </div>
-        <p class="mt-3 max-w-xs text-xs text-slate-400 sm:text-[13px]">
+        <p class="mt-3 max-w-xs text-xs text-texto sm:text-[13px]">
           Desliza horizontalmente para descubrir más colecciones. Pronto podrás guardar tus favoritas.
         </p>
       </div>
@@ -88,35 +88,35 @@ const comparisonProducts =
         >
         <a
           href="/vinotecas"
-              class="group relative flex min-h-[400px] min-w-[calc(100vw-3rem)] flex-shrink-0 snap-start overflow-hidden rounded-2xl border border-white/10 text-slate-50 shadow-lg shadow-black/30 ring-1 ring-white/10 sm:min-h-[460px] sm:min-w-[calc(100vw-8rem)] md:min-w-[600px]"
+              class="group relative flex min-h-[400px] min-w-[calc(100vw-3rem)] flex-shrink-0 snap-start overflow-hidden rounded-2xl border border-white/10 text-slate-50 shadow-lg shadow-black/30 ring-1 ring-white/10 sm:min-h-[460px] sm:min-w-[calc(100vw-8rem)] md:min-w-[600px] hover:!text-slate-50 [&_*]:hover:!text-inherit"
             >
               <img
                 src="/media/ejemplo1.jpg"
                 alt="Vinotecas para casa"
-                class="absolute inset-0 h-full w-full object-cover"
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent" />
               <div class="relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <div class="space-y-3">
-                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-vino-100/90">
+                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-vino-100/90 hover:text-vino-100/90">
                     Hogar
                   </p>
-                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl">
+                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl hover:text-inherit">
                     Vinotecas para casa
                   </h3>
-                  <p class="text-base leading-relaxed text-vino-50/90 sm:text-lg">
+                  <p class="text-base leading-relaxed text-vino-50/90 sm:text-lg hover:text-vino-50/90">
                     Mantén tus botellas a la temperatura perfecta con modelos silenciosos y elegantes.
                   </p>
                 </div>
-                <div class="mt-6 flex items-center justify-between text-sm text-vino-50/90 sm:text-base">
+                <div class="mt-6 flex items-center justify-between text-sm text-vino-50/90 sm:text-base [&_*]:hover:!text-inherit">
                   <span class="inline-flex items-center gap-1.5 rounded-full bg-black/40 px-4 py-2 text-sm">
                     <span class="h-2 w-2 rounded-full bg-emerald-300" />
                     6 modelos recomendados
                   </span>
-                  <span class="inline-flex items-center gap-1.5 text-sm font-medium group-hover:underline sm:text-base">
-                    Ver selección
-                    <span aria-hidden="true">↗</span>
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium sm:text-base hover:text-inherit">
+                    <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Ver selección</span>
+                    <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
                   </span>
                 </div>
               </div>
@@ -124,35 +124,35 @@ const comparisonProducts =
 
             <a
               href="/accesorios"
-              class="group relative flex min-h-[400px] min-w-[calc(100vw-3rem)] flex-shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-700/80 text-slate-50 shadow-lg shadow-black/30 ring-1 ring-white/5 sm:min-h-[460px] sm:min-w-[calc(100vw-8rem)] md:min-w-[600px]"
+              class="group relative flex min-h-[400px] min-w-[calc(100vw-3rem)] flex-shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-700/80 text-slate-50 shadow-lg shadow-black/30 ring-1 ring-white/5 sm:min-h-[460px] sm:min-w-[calc(100vw-8rem)] md:min-w-[600px] hover:!text-slate-50 [&_*]:hover:!text-inherit"
             >
               <img
                 src="/media/ejemplo2.jpg"
                 alt="Copas y cristalería"
-                class="absolute inset-0 h-full w-full object-cover"
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent" />
               <div class="relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <div class="space-y-3">
-                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-200">
+                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-200 hover:text-slate-200">
                     Mesa y copa
                   </p>
-                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl">
+                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl hover:text-inherit">
                     Copas y cristalería
                   </h3>
-                  <p class="text-base leading-relaxed text-slate-100/90 sm:text-lg">
+                  <p class="text-base leading-relaxed text-slate-100/90 sm:text-lg hover:text-slate-100/90">
                     Elige copas que potencien aromas, textura y color para cada tipo de vino.
                   </p>
                 </div>
-                <div class="mt-6 flex items-center justify-between text-sm text-slate-100/90 sm:text-base">
+                <div class="mt-6 flex items-center justify-between text-sm text-slate-100/90 sm:text-base [&_*]:hover:!text-inherit">
                   <span class="inline-flex items-center gap-1.5 rounded-full bg-black/35 px-4 py-2 text-sm">
                     <span class="h-2 w-2 rounded-full bg-vino-300" />
                     4 colecciones comparadas
                   </span>
-                  <span class="inline-flex items-center gap-1.5 text-sm font-medium group-hover:underline sm:text-base">
-                    Ver selección
-                    <span aria-hidden="true">↗</span>
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium sm:text-base hover:text-inherit">
+                    <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Ver selección</span>
+                    <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
                   </span>
                 </div>
               </div>
@@ -160,35 +160,35 @@ const comparisonProducts =
 
             <a
               href="/accesorios"
-              class="group relative flex min-h-[400px] min-w-[calc(100vw-3rem)] flex-shrink-0 snap-start overflow-hidden rounded-2xl border border-emerald-500/50 text-emerald-50 shadow-lg shadow-black/30 ring-1 ring-white/10 sm:min-h-[460px] sm:min-w-[calc(100vw-8rem)] md:min-w-[600px]"
+              class="group relative flex min-h-[400px] min-w-[calc(100vw-3rem)] flex-shrink-0 snap-start overflow-hidden rounded-2xl border border-emerald-500/50 text-emerald-50 shadow-lg shadow-black/30 ring-1 ring-white/10 sm:min-h-[460px] sm:min-w-[calc(100vw-8rem)] md:min-w-[600px] hover:!text-emerald-50 [&_*]:hover:!text-inherit"
             >
               <img
                 src="/media/ejemplo3.jpg"
                 alt="Accesorios imprescindibles para vino"
-                class="absolute inset-0 h-full w-full object-cover"
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent" />
               <div class="relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <div class="space-y-3">
-                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-emerald-100">
+                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-emerald-100 hover:text-emerald-100">
                     Ritual
                   </p>
-                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl">
+                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl hover:text-inherit">
                     Accesorios imprescindibles
                   </h3>
-                  <p class="text-base leading-relaxed text-emerald-50/90 sm:text-lg">
+                  <p class="text-base leading-relaxed text-emerald-50/90 sm:text-lg hover:text-emerald-50/90">
                     Sacacorchos, decantadores y aireadores para disfrutar cada botella al máximo.
                   </p>
                 </div>
-                <div class="mt-6 flex items-center justify-between text-sm text-emerald-50/90 sm:text-base">
+                <div class="mt-6 flex items-center justify-between text-sm text-emerald-50/90 sm:text-base [&_*]:hover:!text-inherit">
                   <span class="inline-flex items-center gap-1.5 rounded-full bg-black/35 px-4 py-2 text-sm">
                     <span class="h-2 w-2 rounded-full bg-emerald-300" />
                     Kit básico recomendado
                   </span>
-                  <span class="inline-flex items-center gap-1.5 text-sm font-medium group-hover:underline sm:text-base">
-                    Ver selección
-                    <span aria-hidden="true">↗</span>
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium sm:text-base hover:text-inherit">
+                    <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Ver selección</span>
+                    <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
                   </span>
                 </div>
               </div>
@@ -196,35 +196,35 @@ const comparisonProducts =
 
             <a
               href="/accesorios"
-              class="group relative flex min-h-[400px] min-w-[calc(100vw-3rem)] flex-shrink-0 snap-start overflow-hidden rounded-2xl border border-amber-500/60 text-amber-50 shadow-lg shadow-black/30 ring-1 ring-white/10 sm:min-h-[460px] sm:min-w-[calc(100vw-8rem)] md:min-w-[600px]"
+              class="group relative flex min-h-[400px] min-w-[calc(100vw-3rem)] flex-shrink-0 snap-start overflow-hidden rounded-2xl border border-amber-500/60 text-amber-50 shadow-lg shadow-black/30 ring-1 ring-white/10 sm:min-h-[460px] sm:min-w-[calc(100vw-8rem)] md:min-w-[600px] hover:!text-amber-50 [&_*]:hover:!text-inherit"
             >
               <img
                 src="/media/ejemplo4.jpg"
                 alt="Ideas para regalar a amantes del vino"
-                class="absolute inset-0 h-full w-full object-cover"
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent" />
               <div class="relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <div class="space-y-3">
-                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-100">
+                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-100 hover:text-amber-100">
                     Para regalar
                   </p>
-                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl">
+                  <h3 class="text-3xl font-serif font-semibold sm:text-4xl hover:text-inherit">
                     Ideas para amantes del vino
                   </h3>
-                  <p class="text-base leading-relaxed text-amber-50/90 sm:text-lg">
+                  <p class="text-base leading-relaxed text-amber-50/90 sm:text-lg hover:text-amber-50/90">
                     Packs y detalles con efecto "wow" para sorprender sin complicarte.
                   </p>
                 </div>
-                <div class="mt-6 flex items-center justify-between text-sm text-amber-50/90 sm:text-base">
+                <div class="mt-6 flex items-center justify-between text-sm text-amber-50/90 sm:text-base [&_*]:hover:!text-inherit">
                   <span class="inline-flex items-center gap-1.5 rounded-full bg-black/35 px-4 py-2 text-sm">
                     <span class="h-2 w-2 rounded-full bg-amber-300" />
                     Selección para cualquier presupuesto
                   </span>
-                  <span class="inline-flex items-center gap-1.5 text-sm font-medium group-hover:underline sm:text-base">
-                    Ver selección
-                    <span aria-hidden="true">↗</span>
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium sm:text-base hover:text-inherit">
+                    <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Ver selección</span>
+                    <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
                   </span>
                 </div>
               </div>
@@ -246,34 +246,34 @@ const comparisonProducts =
         >
           <span aria-hidden="true">→</span>
         </button>
-        <div class="pointer-events-none absolute inset-y-4 right-0 w-20 bg-gradient-to-l from-slate-950 to-transparent sm:inset-y-6 sm:w-28" />
+        <div class="pointer-events-none absolute inset-y-4 right-0 w-20 bg-gradient-to-l from-slate-900 to-transparent sm:inset-y-6 sm:w-28" />
       </div>
       <div class="mt-6 flex justify-center">
           <a
             href="/colecciones"
-            class="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-100 shadow-sm shadow-black/40 ring-1 ring-white/20 backdrop-blur transition hover:bg-vino-600 hover:text-white hover:ring-vino-600"
+            class="group inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-100 shadow-sm shadow-black/40 ring-1 ring-white/20 backdrop-blur transition hover:bg-vino-600 hover:text-white hover:ring-vino-600"
           >
-            Ver todas las colecciones
-          <span aria-hidden="true">→</span>
+            <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Ver todas las colecciones</span>
+          <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
         </a>
       </div>
         </div>
     </section>
-  <section class="border-b border-slate-900/40 bg-slate-950/95">
+  <section class="border-b border-slate-900/40 bg-slate-900/95">
     <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
       <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-vino-300">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em]" style="color: #E5C256;">
             Productos recomendados
           </p>
-          <h2 class="mt-1 text-3xl font-serif font-semibold tracking-tight text-slate-50 sm:text-4xl">
+          <h2 class="mt-1 text-3xl font-serif font-semibold tracking-tight text-pink-200 sm:text-4xl">
             Nuestra selección para empezar bien la bodega
           </h2>
-          <p class="mt-2 max-w-xl text-base text-slate-300">
+          <p class="mt-2 max-w-xl text-base text-texto">
             Una selección rápida de productos con buena relación calidad-precio para que no tengas que comparar durante horas.
           </p>
         </div>
-        <p class="mt-2 max-w-xs text-xs text-slate-400 sm:text-sm">
+        <p class="mt-2 max-w-xs text-xs text-texto sm:text-sm">
           Enlaces de afiliado a Amazon: tú pagas lo mismo y ayudas a mantener Casi Divino.
         </p>
       </div>
@@ -302,7 +302,7 @@ const comparisonProducts =
           class="flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:px-6 md:snap-none"
           style="scrollbar-width: none; -ms-overflow-style: none;"
         >
-          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
             <div class="relative aspect-[4/3] overflow-hidden">
               <img
                 src="/media/ejemplo1.jpg"
@@ -310,17 +310,17 @@ const comparisonProducts =
                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
               <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
                 Vinoteca
               </div>
             </div>
             <div class="flex flex-1 flex-col justify-between gap-3 p-4">
               <div class="space-y-3">
-                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-texto">
                   Vinoteca compacta para 12 botellas
                 </h3>
-                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-texto">
                   Ideal para pisos pequeños: silenciosa, con control electrónico de temperatura y puerta de cristal ahumado.
                 </p>
               </div>
@@ -328,19 +328,19 @@ const comparisonProducts =
                 <div class="flex items-center justify-between text-xs text-amber-300">
                   <div class="flex items-center gap-0.5">
                     <span>★★★★★</span>
-                    <span class="ml-1 text-[11px] text-slate-400">4,7 / 5</span>
+                    <span class="ml-1 text-[11px] text-texto">4,7 / 5</span>
                   </div>
                   <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-300">
                     Superventas
                   </span>
                 </div>
                 <div class="flex items-center justify-between text-base font-semibold min-h-[1.75rem]">
-                  <span class="text-slate-50">€189,99</span>
-                  <span class="text-sm font-normal text-slate-400 line-through">€219,99</span>
+                  <span class="text-texto">€189,99</span>
+                  <span class="text-sm font-normal text-texto line-through">€219,99</span>
                 </div>
                 <a
                   href="#"
-                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
                 >
                   Ver en Amazon
                 </a>
@@ -348,7 +348,7 @@ const comparisonProducts =
             </div>
           </article>
 
-          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
             <div class="relative aspect-[4/3] overflow-hidden">
               <img
                 src="/media/ejemplo2.jpg"
@@ -356,17 +356,17 @@ const comparisonProducts =
                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
               <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
                 Copas
               </div>
             </div>
             <div class="flex flex-1 flex-col justify-between gap-3 p-4">
               <div class="space-y-3">
-                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-texto">
                   Juego de 6 copas de vino tinto
                 </h3>
-                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-texto">
                   Cristal fino, resistente al lavavajillas y con forma pensada para concentrar aromas y suavizar taninos.
                 </p>
               </div>
@@ -374,7 +374,7 @@ const comparisonProducts =
                 <div class="flex items-center justify-between text-xs text-amber-300">
                   <div class="flex items-center gap-0.5">
                     <span>★★★★☆</span>
-                    <span class="ml-1 text-[11px] text-slate-400">4,5 / 5</span>
+                    <span class="ml-1 text-[11px] text-texto">4,5 / 5</span>
                   </div>
                   <span class="rounded-full bg-slate-100/5 px-2 py-0.5 text-xs font-semibold text-slate-200">
                     Mejor calidad-precio
@@ -386,7 +386,7 @@ const comparisonProducts =
                 </div>
                 <a
                   href="#"
-                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
                 >
                   Ver en Amazon
                 </a>
@@ -394,7 +394,7 @@ const comparisonProducts =
             </div>
           </article>
 
-          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
             <div class="relative aspect-[4/3] overflow-hidden">
               <img
                 src="/media/ejemplo3.jpg"
@@ -402,17 +402,17 @@ const comparisonProducts =
                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
               <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
                 Accesorios
               </div>
             </div>
             <div class="flex flex-1 flex-col justify-between gap-3 p-4">
               <div class="space-y-3">
-                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-texto">
                   Kit de accesorios para vino
                 </h3>
-                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-texto">
                   Incluye sacacorchos, tapón al vacío y aireador, en un estuche elegante perfecto también para regalar.
                 </p>
               </div>
@@ -420,7 +420,7 @@ const comparisonProducts =
                 <div class="flex items-center justify-between text-xs text-amber-300">
                   <div class="flex items-center gap-0.5">
                     <span>★★★★☆</span>
-                    <span class="ml-1 text-[11px] text-slate-400">4,4 / 5</span>
+                    <span class="ml-1 text-[11px] text-texto">4,4 / 5</span>
                   </div>
                   <span class="rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-semibold text-amber-300">
                     Ideal para regalo
@@ -432,7 +432,7 @@ const comparisonProducts =
                 </div>
                 <a
                   href="#"
-                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
                 >
                   Ver en Amazon
                 </a>
@@ -440,7 +440,7 @@ const comparisonProducts =
             </div>
           </article>
 
-          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
             <div class="relative aspect-[4/3] overflow-hidden">
               <img
                 src="/media/ejemplo4.jpg"
@@ -448,17 +448,17 @@ const comparisonProducts =
                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
               <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
                 Decantador
               </div>
             </div>
             <div class="flex flex-1 flex-col justify-between gap-3 p-4">
               <div class="space-y-3">
-                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-texto">
                   Decantador de vino de cristal
                 </h3>
-                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-texto">
                   Diseño elegante con base ancha para oxigenar mejor el vino. Capacidad de 1 litro, perfecto para botellas estándar.
                 </p>
               </div>
@@ -466,7 +466,7 @@ const comparisonProducts =
                 <div class="flex items-center justify-between text-xs text-amber-300">
                   <div class="flex items-center gap-0.5">
                     <span>★★★★★</span>
-                    <span class="ml-1 text-[11px] text-slate-400">4,6 / 5</span>
+                    <span class="ml-1 text-[11px] text-texto">4,6 / 5</span>
                   </div>
                   <span class="rounded-full bg-vino-500/10 px-2 py-0.5 text-xs font-semibold text-vino-300">
                     Más vendido
@@ -478,7 +478,7 @@ const comparisonProducts =
                 </div>
                 <a
                   href="#"
-                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
                 >
                   Ver en Amazon
                 </a>
@@ -486,7 +486,7 @@ const comparisonProducts =
             </div>
           </article>
 
-          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
             <div class="relative aspect-[4/3] overflow-hidden">
               <img
                 src="/media/ejemplo1.jpg"
@@ -494,17 +494,17 @@ const comparisonProducts =
                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
               <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
                 Accesorios
               </div>
             </div>
             <div class="flex flex-1 flex-col justify-between gap-3 p-4">
               <div class="space-y-3">
-                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-texto">
                   Termómetro para vino digital
                 </h3>
-                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-texto">
                   Mide la temperatura perfecta para servir cada tipo de vino. Pantalla LCD, lectura rápida y diseño compacto.
                 </p>
               </div>
@@ -512,7 +512,7 @@ const comparisonProducts =
                 <div class="flex items-center justify-between text-xs text-amber-300">
                   <div class="flex items-center gap-0.5">
                     <span>★★★★☆</span>
-                    <span class="ml-1 text-[11px] text-slate-400">4,3 / 5</span>
+                    <span class="ml-1 text-[11px] text-texto">4,3 / 5</span>
                   </div>
                   <span class="rounded-full bg-blue-500/10 px-2 py-0.5 text-xs font-semibold text-blue-300">
                     Precisión
@@ -524,7 +524,7 @@ const comparisonProducts =
                 </div>
                 <a
                   href="#"
-                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
                 >
                   Ver en Amazon
                 </a>
@@ -532,7 +532,7 @@ const comparisonProducts =
             </div>
           </article>
 
-          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
+          <article class="group flex h-full w-[280px] min-w-[280px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/80 text-sm shadow-lg shadow-black/40 ring-1 ring-white/5 sm:w-[300px] sm:min-w-[300px] md:w-[320px] md:min-w-[320px]">
             <div class="relative aspect-[4/3] overflow-hidden">
               <img
                 src="/media/ejemplo2.jpg"
@@ -540,17 +540,17 @@ const comparisonProducts =
                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
               <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-vino-100">
                 Copas
               </div>
             </div>
             <div class="flex flex-1 flex-col justify-between gap-3 p-4">
               <div class="space-y-3">
-                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-slate-50">
+                <h3 class="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-texto">
                   Juego de 4 copas de vino blanco
                 </h3>
-                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-slate-300">
+                <p class="line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-texto">
                   Copas altas y estrechas diseñadas para mantener la temperatura del vino blanco. Cristal de calidad premium.
                 </p>
               </div>
@@ -558,7 +558,7 @@ const comparisonProducts =
                 <div class="flex items-center justify-between text-xs text-amber-300">
                   <div class="flex items-center gap-0.5">
                     <span>★★★★★</span>
-                    <span class="ml-1 text-[11px] text-slate-400">4,8 / 5</span>
+                    <span class="ml-1 text-[11px] text-texto">4,8 / 5</span>
                   </div>
                   <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-300">
                     Top ventas
@@ -570,7 +570,7 @@ const comparisonProducts =
                 </div>
                 <a
                   href="#"
-                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  class="mt-auto inline-flex items-center justify-center rounded-full bg-vino-600 px-3 py-2 text-sm font-semibold text-white shadow-md shadow-vino-900/50 transition hover:bg-vino-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
                 >
                   Ver en Amazon
                 </a>
@@ -594,15 +594,15 @@ const comparisonProducts =
         >
           <span aria-hidden="true">→</span>
         </button>
-        <div class="pointer-events-none absolute inset-y-4 right-0 w-20 bg-gradient-to-l from-slate-950 to-transparent sm:inset-y-6 sm:w-28" />
+        <div class="pointer-events-none absolute inset-y-4 right-0 w-20 bg-gradient-to-l from-slate-900 to-transparent sm:inset-y-6 sm:w-28" />
       </div>
       <div class="mt-6 flex justify-center">
         <a
           href="/productos"
-          class="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-100 shadow-sm shadow-black/40 ring-1 ring-white/20 backdrop-blur transition hover:bg-vino-600 hover:text-white hover:ring-vino-600"
+          class="group inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-100 shadow-sm shadow-black/40 ring-1 ring-white/20 backdrop-blur transition hover:bg-vino-600 hover:text-white hover:ring-vino-600"
         >
-          Ver todos los productos destacados
-          <span aria-hidden="true">→</span>
+          <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Ver todos los productos destacados</span>
+          <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
         </a>
       </div>
     </div>
@@ -614,28 +614,28 @@ const comparisonProducts =
       class="parallax-image absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
       style="background-image: url('/media/fondoprueba.jpg');"
     ></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/60 to-slate-950/80"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/60 to-slate-900/80"></div>
   </div>
 
   <!-- Sección de Blog -->
-  <section class="border-b border-slate-200 bg-white py-12 dark:border-slate-800 dark:bg-slate-950 sm:py-16">
+  <section class="border-b border-slate-200 bg-white py-12 dark:border-slate-800 dark:bg-slate-900 sm:py-16">
     <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 sm:px-6">
       <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-vino-300">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em]" style="color: #E5C256;">
             Blog
           </p>
-          <h2 class="mt-1 text-2xl font-serif font-semibold tracking-tight text-slate-900 dark:text-slate-50 sm:text-3xl">
+          <h2 class="mt-1 text-2xl font-serif font-semibold tracking-tight text-texto dark:text-texto sm:text-3xl">
             Aprende sobre vino
           </h2>
-          <p class="mt-2 max-w-xl text-sm text-slate-600 dark:text-slate-400">
+          <p class="mt-2 max-w-xl text-sm text-texto dark:text-texto">
             Guías, consejos y artículos para convertirte en un auténtico experto en vino.
           </p>
         </div>
       </div>
 
       {featuredArticles.length === 0 ? (
-        <p class="text-xs text-slate-500 dark:text-slate-400">
+        <p class="text-xs text-texto dark:text-texto">
           Aún no hay artículos destacados. Añade contenido en
           <code class="mx-1 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] dark:bg-slate-900">
             src/content/blog
@@ -648,7 +648,7 @@ const comparisonProducts =
           {featuredArticles[0] && (
             <a
               href={`/blog/${featuredArticles[0].slug}/`}
-              class="group relative col-span-1 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:border-vino-500/70 hover:shadow-lg hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-950/80 lg:col-span-2"
+              class="group relative col-span-1 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:border-vino-500/70 hover:shadow-lg hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-900/80 lg:col-span-2"
             >
               <div class="relative aspect-[16/9] overflow-hidden">
                 <img
@@ -657,7 +657,7 @@ const comparisonProducts =
                   class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
-                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
                 <div class="absolute bottom-4 left-4 right-4">
                   <div class="mb-2 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-vino-700 backdrop-blur dark:bg-slate-900/90 dark:text-vino-200">
                     Destacado
@@ -668,11 +668,11 @@ const comparisonProducts =
                 </div>
               </div>
               <div class="p-6">
-                <p class="line-clamp-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                <p class="line-clamp-2 text-sm leading-relaxed text-texto dark:text-texto">
                   {featuredArticles[0].data.description}
                 </p>
                 <div class="mt-4 flex items-center justify-between">
-                  <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                  <div class="flex items-center gap-2 text-xs text-texto dark:text-texto">
                     <p>
                       {featuredArticles[0].data.date.toLocaleDateString('es-ES', {
                         year: 'numeric',
@@ -680,12 +680,12 @@ const comparisonProducts =
                         day: 'numeric',
                       })}
                     </p>
-                    <span class="text-slate-400 dark:text-slate-500">•</span>
+                    <span class="text-texto dark:text-texto">•</span>
                     <p>{featuredArticles[0].readingTime} min lectura</p>
                   </div>
-                  <span class="inline-flex items-center gap-1 text-xs font-medium text-vino-600 group-hover:underline dark:text-vino-400">
-                    Leer más
-                    <span aria-hidden="true">→</span>
+                  <span class="inline-flex items-center gap-1 text-xs font-medium [color:#E5C256]">
+                    <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Leer más</span>
+                    <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
                   </span>
                 </div>
               </div>
@@ -697,7 +697,7 @@ const comparisonProducts =
             {featuredArticles.slice(1, 4).map((post) => (
               <a
                 href={`/blog/${post.slug}/`}
-                class="group flex flex-1 gap-4 overflow-hidden rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:border-vino-500/70 hover:shadow-md hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-950/80"
+                class="group flex flex-1 gap-4 overflow-hidden rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:border-vino-500/70 hover:shadow-md hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-900/80"
               >
                 <div class="relative h-full w-28 shrink-0 overflow-hidden rounded-lg">
                   <img
@@ -708,13 +708,13 @@ const comparisonProducts =
                   />
                 </div>
                 <div class="flex min-w-0 flex-1 flex-col">
-                  <h3 class="line-clamp-2 font-serif text-sm font-semibold text-slate-900 group-hover:text-vino-600 dark:text-slate-50 dark:group-hover:text-vino-200">
+                  <h3 class="line-clamp-2 font-serif text-sm font-semibold text-texto group-hover:text-vino-600 dark:text-texto dark:group-hover:text-vino-200">
                 {post.data.title}
               </h3>
-                  <p class="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                  <p class="mt-1 line-clamp-2 text-xs leading-relaxed text-texto dark:text-texto">
                 {post.data.description}
               </p>
-                  <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                  <p class="mt-2 text-xs text-texto dark:text-texto">
                 {post.data.date.toLocaleDateString('es-ES', {
                   year: 'numeric',
                   month: 'short',
@@ -723,9 +723,9 @@ const comparisonProducts =
                     {' • '}
                     {post.readingTime} min lectura
               </p>
-                  <span class="mt-2 inline-flex items-center gap-1 text-xs font-medium text-vino-600 group-hover:underline dark:text-vino-400">
-                    Leer más
-                    <span aria-hidden="true">→</span>
+                  <span class="mt-2 inline-flex items-center gap-1 text-xs font-medium [color:#E5C256]">
+                    <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Leer más</span>
+                    <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
                   </span>
                 </div>
             </a>

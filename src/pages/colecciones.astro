@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const collections = [
+  {
+    title: 'Vinotecas para casa',
+    category: 'Hogar',
+    description: 'Mantén tus botellas a la temperatura perfecta con modelos silenciosos y elegantes.',
+    image: '/media/ejemplo1.jpg',
+    href: '/vinotecas',
+    count: '6 modelos recomendados',
+    color: 'vino',
+  },
+  {
+    title: 'Copas y cristalería',
+    category: 'Mesa y copa',
+    description: 'Elige copas que potencien aromas, textura y color para cada tipo de vino.',
+    image: '/media/ejemplo2.jpg',
+    href: '/accesorios',
+    count: '4 colecciones comparadas',
+    color: 'slate',
+  },
+  {
+    title: 'Accesorios imprescindibles',
+    category: 'Ritual',
+    description: 'Sacacorchos, decantadores y aireadores para disfrutar cada botella al máximo.',
+    image: '/media/ejemplo3.jpg',
+    href: '/accesorios',
+    count: 'Kit básico recomendado',
+    color: 'emerald',
+  },
+  {
+    title: 'Ideas para amantes del vino',
+    category: 'Para regalar',
+    description: 'Packs y detalles con efecto "wow" para sorprender sin complicarte.',
+    image: '/media/ejemplo4.jpg',
+    href: '/accesorios',
+    count: 'Selección para cualquier presupuesto',
+    color: 'amber',
+  },
+];
+
+const colorClasses = {
+  vino: {
+    border: 'border-white/10',
+    category: 'text-vino-100/90',
+    title: 'text-slate-50',
+    description: 'text-vino-50/90',
+    count: 'text-vino-50/90',
+    badge: 'bg-vino-300',
+  },
+  slate: {
+    border: 'border-slate-700/80',
+    category: 'text-slate-200',
+    title: 'text-slate-50',
+    description: 'text-slate-100/90',
+    count: 'text-slate-100/90',
+    badge: 'bg-vino-300',
+  },
+  emerald: {
+    border: 'border-emerald-500/50',
+    category: 'text-emerald-100',
+    title: 'text-emerald-50',
+    description: 'text-emerald-50/90',
+    count: 'text-emerald-50/90',
+    badge: 'bg-emerald-300',
+  },
+  amber: {
+    border: 'border-amber-500/60',
+    category: 'text-amber-100',
+    title: 'text-amber-50',
+    description: 'text-amber-50/90',
+    count: 'text-amber-50/90',
+    badge: 'bg-amber-300',
+  },
+};
+---
+
+<Layout
+  title="Colecciones | Casi Divino"
+  description="Descubre nuestras colecciones curadas de productos de vino: vinotecas, copas, accesorios y más. Selecciones pensadas para diferentes momentos y necesidades."
+  canonical="/colecciones"
+>
+  <section class="border-b border-slate-900/40 bg-slate-900">
+    <div class="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-16 sm:px-6 sm:py-20">
+      <div class="flex flex-col gap-2">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em]" style="color: #E5C256;">
+          Inspiración
+        </p>
+        <h1 class="text-3xl font-serif font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
+          Todas las colecciones
+        </h1>
+        <p class="mt-2 max-w-2xl text-base text-slate-300 sm:text-lg">
+          Inspírate con selecciones curadas para diferentes momentos: desde una cena íntima hasta una cata con amigos.
+        </p>
+      </div>
+
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+        {collections.map((collection) => {
+          const colors = colorClasses[collection.color as keyof typeof colorClasses];
+          return (
+            <a
+              href={collection.href}
+              class={`group relative flex min-h-[400px] flex-col overflow-hidden rounded-2xl border ${colors.border} text-slate-50 shadow-lg shadow-black/30 ring-1 ring-white/10 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-black/50 sm:min-h-[460px]`}
+            >
+              <img
+                src={collection.image}
+                alt={collection.title}
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent" />
+              <div class="relative flex h-full flex-col justify-end p-6 sm:p-8">
+                <div class="space-y-3">
+                  <p class={`text-sm font-medium uppercase tracking-[0.2em] ${colors.category}`}>
+                    {collection.category}
+                  </p>
+                  <h3 class={`text-3xl font-serif font-semibold ${colors.title} sm:text-4xl`}>
+                    {collection.title}
+                  </h3>
+                  <p class={`text-base leading-relaxed ${colors.description} sm:text-lg`}>
+                    {collection.description}
+                  </p>
+                </div>
+                <div class={`mt-6 flex items-center justify-between text-sm ${colors.count} sm:text-base`}>
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-black/40 px-4 py-2 text-sm">
+                    <span class={`h-2 w-2 rounded-full ${colors.badge}`} />
+                    {collection.count}
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium sm:text-base">
+                    <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Ver selección</span>
+                    <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
+                  </span>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</Layout>
+

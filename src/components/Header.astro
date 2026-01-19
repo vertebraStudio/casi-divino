@@ -1,13 +1,13 @@
 ---
 const navItems = [
   { href: '/', label: 'Inicio' },
-  { href: '/accesorios', label: 'Accesorios' },
-  { href: '/vinotecas', label: 'Vinotecas' },
+  { href: '/colecciones', label: 'Colecciones' },
+  { href: '/productos', label: 'Destacados' },
   { href: '/blog', label: 'Blog' },
 ];
 ---
 
-<header class="sticky top-0 z-40 border-b border-slate-200/60 bg-white/80 dark:bg-slate-950/80 backdrop-blur">
+<header class="sticky top-0 z-40 border-b border-slate-200/60 bg-white/80 dark:bg-slate-900/80 backdrop-blur">
   <div class="relative mx-auto grid max-w-5xl grid-cols-3 items-center px-4 py-3 sm:px-6">
     <a href="/" class="flex items-center gap-3 leading-tight">
       <img
@@ -20,7 +20,7 @@ const navItems = [
         <span class="text-lg font-serif font-semibold tracking-tight text-vino-600 dark:text-vino-200">
           Casi Divino
         </span>
-        <span class="text-xs font-sans text-slate-500 dark:text-slate-400">
+        <span class="text-xs font-sans text-texto dark:text-texto">
           Guías y reseñas de vino
         </span>
       </div>
@@ -30,7 +30,7 @@ const navItems = [
       {navItems.map((item) => (
         <a
           href={item.href}
-          class="text-slate-700 transition hover:text-vino-600 dark:text-slate-200 dark:hover:text-vino-200"
+          class="text-texto transition hover:[color:#E5C256] dark:text-texto dark:hover:[color:#E5C256]"
         >
           {item.label}
         </a>
@@ -43,7 +43,7 @@ const navItems = [
       </a>
       <button
         type="button"
-        class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-vino-500 hover:text-vino-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-vino-300 dark:hover:text-vino-200 sm:hidden"
+        class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-texto shadow-sm transition hover:border-vino-500 hover:text-vino-600 dark:border-slate-800 dark:bg-slate-900 dark:text-texto dark:hover:border-vino-300 dark:hover:text-vino-200 sm:hidden"
         aria-label="Abrir menú"
         id="mobile-menu-toggle"
       >
@@ -54,12 +54,12 @@ const navItems = [
 
   <div
     id="mobile-menu"
-    class="mx-auto hidden max-w-5xl space-y-1 border-t border-slate-200 bg-white px-4 py-3 text-sm dark:border-slate-800 dark:bg-slate-950 sm:hidden"
+    class="mx-auto hidden max-w-5xl space-y-1 border-t border-slate-200 bg-white px-4 py-3 text-sm dark:border-slate-800 dark:bg-slate-900 sm:hidden"
   >
     {navItems.map((item) => (
       <a
         href={item.href}
-        class="block rounded-md px-2 py-1 text-slate-700 transition hover:bg-vino-50 hover:text-vino-700 dark:text-slate-200 dark:hover:bg-slate-900 dark:hover:text-vino-100"
+        class="block rounded-md px-2 py-1 text-texto transition hover:bg-vino-50 dark:text-texto dark:hover:bg-slate-900 hover:[color:#E5C256]"
       >
         {item.label}
       </a>

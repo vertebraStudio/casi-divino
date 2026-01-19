@@ -16,6 +16,9 @@ export default {
           800: '#3a0d1c',
           900: '#200711',
         },
+        texto: {
+          DEFAULT: '#C5D2F8',
+        },
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'ui-serif', 'Georgia', 'serif'],

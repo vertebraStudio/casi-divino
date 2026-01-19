@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const blogEntries = await getCollection('blog');
+
+// Obtener todas las entradas ordenadas por fecha (más recientes primero)
+const allArticles = blogEntries
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .map((entry) => {
+    // Calcular tiempo de lectura (promedio: 200 palabras por minuto)
+    const content = entry.body || '';
+    const wordCount = content.split(/\s+/).length;
+    const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+    return { ...entry, readingTime };
+  });
+
+const featuredArticles = allArticles.filter((entry) => entry.data.featured);
+const regularArticles = allArticles.filter((entry) => !entry.data.featured);
+---
+
+<Layout
+  title="Blog | Casi Divino"
+  description="Guías, consejos y artículos sobre vino para convertirte en un auténtico experto. Aprende a catar, conservar y disfrutar del vino."
+  canonical="/blog"
+>
+  <section class="border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-16 sm:px-6 sm:py-20">
+      <div class="flex flex-col gap-2">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em]" style="color: #E5C256;">
+          Blog
+        </p>
+        <h1 class="text-3xl font-serif font-semibold tracking-tight text-texto dark:text-texto sm:text-4xl lg:text-5xl">
+          Aprende sobre vino
+        </h1>
+        <p class="mt-2 max-w-2xl text-base text-texto dark:text-texto sm:text-lg">
+          Guías, consejos y artículos para convertirte en un auténtico experto en vino.
+        </p>
+      </div>
+
+      {allArticles.length === 0 ? (
+        <div class="rounded-2xl border border-slate-200 bg-white/80 p-12 text-center dark:border-slate-800 dark:bg-slate-900/80">
+          <p class="text-base text-texto">
+            Aún no hay artículos disponibles.
+          </p>
+          <p class="mt-2 text-sm text-texto">
+            Añade artículos en <code class="rounded bg-slate-100 px-2 py-1 text-xs dark:bg-slate-900">src/content/blog</code>
+          </p>
+        </div>
+      ) : (
+        <>
+          {/* Artículos destacados */}
+          {featuredArticles.length > 0 && (
+            <div class="space-y-6">
+              <div class="flex items-center gap-2">
+                <h2 class="text-xl font-serif font-semibold text-texto dark:text-texto sm:text-2xl">
+                  Destacados
+                </h2>
+                <span class="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
+              </div>
+              <div class="grid gap-6 lg:grid-cols-2">
+                {featuredArticles.map((article) => (
+                  <a
+                    href={`/blog/${article.slug}/`}
+                    class="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:border-vino-500/70 hover:shadow-lg hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-900/80"
+                  >
+                    <div class="relative aspect-[16/9] overflow-hidden">
+                      <img
+                        src={article.data.heroImage || '/media/ejemplo1.jpg'}
+                        alt={article.data.title}
+                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+                      <div class="absolute left-4 top-4">
+                        <div class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-vino-700 backdrop-blur dark:bg-slate-900/90 dark:text-vino-200">
+                          Destacado
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-1 flex-col gap-3 p-6">
+                      <div class="space-y-2">
+                        <h3 class="line-clamp-2 font-serif text-lg font-semibold text-texto group-hover:text-vino-600 dark:text-texto dark:group-hover:text-vino-200">
+                          {article.data.title}
+                        </h3>
+                        <p class="line-clamp-2 text-sm leading-relaxed text-texto dark:text-texto">
+                          {article.data.description}
+                        </p>
+                      </div>
+                      <div class="mt-auto flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-xs text-texto dark:text-texto">
+                          <p>
+                            {article.data.date.toLocaleDateString('es-ES', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric',
+                            })}
+                          </p>
+                          <span class="text-slate-400 dark:text-slate-500">•</span>
+                          <p>{article.readingTime} min lectura</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-xs font-medium [color:#E5C256]">
+                          <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Leer más</span>
+                          <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
+                        </span>
+                      </div>
+                      {article.data.tags && article.data.tags.length > 0 && (
+                        <div class="flex flex-wrap gap-2">
+                          {article.data.tags.slice(0, 3).map((tag) => (
+                            <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-texto dark:bg-slate-900 dark:text-texto">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Todos los artículos */}
+          {regularArticles.length > 0 && (
+            <div class="space-y-6">
+              {featuredArticles.length > 0 && (
+                <div class="flex items-center gap-2">
+                  <h2 class="text-xl font-serif font-semibold text-texto dark:text-texto sm:text-2xl">
+                    Todos los artículos
+                  </h2>
+                  <span class="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
+                </div>
+              )}
+              <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {regularArticles.map((article) => (
+                  <a
+                    href={`/blog/${article.slug}/`}
+                    class="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:border-vino-500/70 hover:shadow-md hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-950/80"
+                  >
+                    <div class="relative mb-4 aspect-[16/9] overflow-hidden rounded-lg">
+                      <img
+                        src={article.data.heroImage || '/media/ejemplo2.jpg'}
+                        alt={article.data.title}
+                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="flex flex-1 flex-col gap-3">
+                      <div class="space-y-2">
+                        <h3 class="line-clamp-2 font-serif text-base font-semibold text-texto group-hover:text-vino-600 dark:text-texto dark:group-hover:text-vino-200">
+                          {article.data.title}
+                        </h3>
+                        <p class="line-clamp-2 text-xs leading-relaxed text-texto dark:text-texto">
+                          {article.data.description}
+                        </p>
+                      </div>
+                      <div class="mt-auto space-y-2">
+                        <div class="flex items-center gap-2 text-xs text-texto dark:text-texto">
+                          <p>
+                            {article.data.date.toLocaleDateString('es-ES', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric',
+                            })}
+                          </p>
+                          <span class="text-slate-400 dark:text-slate-500">•</span>
+                          <p>{article.readingTime} min lectura</p>
+                        </div>
+                        {article.data.tags && article.data.tags.length > 0 && (
+                          <div class="flex flex-wrap gap-1.5">
+                            {article.data.tags.slice(0, 2).map((tag) => (
+                              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-texto dark:bg-slate-900 dark:text-texto">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        <span class="inline-flex items-center gap-1 text-xs font-medium [color:#E5C256]">
+                          <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out group-hover:after:w-full">Leer más</span>
+                          <span aria-hidden="true" class="inline-block transition-transform duration-300 group-hover:-rotate-45 group-hover:translate-y-[-2px]">→</span>
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  </section>
+</Layout>
+
