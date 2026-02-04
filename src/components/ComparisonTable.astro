@@ -1,5 +1,5 @@
 ---
-import { Star } from 'lucide-astro';
+import Star from './Star.astro';
 import ProductCard from './ProductCard.astro';
 
 interface Product {
@@ -20,7 +20,7 @@ const { products } = Astro.props;
 const topThree = products.slice(0, 3);
 ---
 
-<section class="space-y-4 rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-950/80">
+<section class="space-y-4 rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900/80">
   <div class="flex items-baseline justify-between gap-3">
     <div>
       <h2 class="text-base font-serif font-semibold text-slate-900 dark:text-slate-50">

@@ -1,5 +1,5 @@
 ---
-import { Star } from 'lucide-astro';
+import Star from './Star.astro';
 
 interface Props {
   title: string;
@@ -18,7 +18,7 @@ const fullStars = Math.round(clampedRating);
 const stars = Array.from({ length: 5 }, (_, i) => i < fullStars);
 ---
 
-<article class="flex h-full flex-col rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-950/80">
+<article class="flex h-full flex-col rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-vino-900/10 dark:border-slate-800 dark:bg-slate-900/80">
   <div class="flex flex-col gap-4 sm:flex-row">
     <div class="sm:w-32">
       <div class="aspect-square overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900">
@@ -97,7 +97,7 @@ const stars = Array.from({ length: 5 }, (_, i) => i < fullStars);
           href={affiliateUrl}
           target="_blank"
           rel="nofollow sponsored"
-          class="inline-flex w-full items-center justify-center rounded-full bg-vino-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-vino-700/30 transition hover:bg-vino-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950"
+          class="inline-flex w-full items-center justify-center rounded-full bg-vino-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-vino-700/30 transition hover:bg-vino-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vino-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900"
         >
           Ver precio en Amazon
         </a>
