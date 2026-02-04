@@ -37,8 +37,6 @@ La forma de la copa afecta a:
 
 ### Copas para vino blanco
 
-![](/images/uploads/_0ls1388.jpg)
-
 **Características**:
 
 * Cuerpo más estrecho y alargado
