@@ -17,10 +17,14 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+    #nc-root:empty::after {
+      content: "Cargando panel…";
+      color: #666;
+    }
   </style>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^2.0.0/dist/decap-cms.js"></script>
+  <div id="nc-root"></div>
   <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", function (user) {
@@ -32,5 +36,6 @@
       });
     }
   </script>
+  <script defer src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
