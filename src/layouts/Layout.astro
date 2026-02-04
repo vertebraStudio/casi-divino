@@ -34,6 +34,7 @@ const { title, description, canonical, ogImage, noindex } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <SEOHead
       {title}
       {description}
@@ -143,6 +144,14 @@ const { title, description, canonical, ogImage, noindex } = Astro.props;
         </div>
       </div>
     </footer>
+    <script is:inline>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("login", function () {
+          window.netlifyIdentity.close();
+          document.location.href = "/admin/";
+        });
+      }
+    </script>
   </body>
 </html>
 

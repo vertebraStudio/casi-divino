@@ -1,0 +1,28 @@
+# Decap CMS - Casi Divino
+# Backend: commits directos al repo vía Git Gateway (Netlify)
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Imágenes subidas desde el CMS
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Artículos del Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    extension: "md"
+    fields:
+      - { label: "Título", name: "title", widget: "string", required: true }
+      - { label: "Descripción", name: "description", widget: "text", required: true }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true }
+      - { label: "Fecha de actualización", name: "updatedDate", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
+      - { label: "Imagen destacada", name: "heroImage", widget: "image", required: false }
+      - { label: "Etiquetas", name: "tags", widget: "list", required: false, field: { label: "Etiqueta", name: "tag", widget: "string" } }
+      - { label: "Destacado", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Contenido", name: "body", widget: "markdown", required: true }
