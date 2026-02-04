@@ -7,3 +7,7 @@ heroImage: /images/uploads/_0ls1388.jpg
 featured: true
 ---
 esto es una pruebilla
+
+
+
+![](/images/uploads/_0ls1388.jpg)
