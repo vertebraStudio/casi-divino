@@ -35,6 +35,11 @@ const { title, description, canonical, ogImage, noindex } = Astro.props;
       rel="stylesheet"
     />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script is:inline>
+      if (window.location.hash && window.location.hash.indexOf('invite_token') !== -1) {
+        window.location.replace('/admin/' + window.location.hash);
+      }
+    </script>
     <SEOHead
       {title}
       {description}
