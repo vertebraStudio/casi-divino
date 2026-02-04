@@ -1,0 +1,4 @@
+# Asegurar que /admin sirva los archivos estáticos del CMS (no el index del SPA)
+/admin   /admin/   301
+/admin/  /admin/index.html   200
+/admin/* /admin/:splat   200
